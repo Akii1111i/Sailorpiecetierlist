@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sailor Piece — Tierlist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f5f5f7;
+  --surface: rgba(255,255,255,0.84);
+  --surface-solid: #ffffff;
+  --surface2: rgba(255,255,255,0.5);
+  --surface3: rgba(0,0,0,0.045);
+  --surface4: rgba(0,0,0,0.07);
+  --text: #1a1a1f;
+  --text2: #6e6e80;
+  --text3: #b0b0be;
+  --accent: #007aff;
+  --accent-glow: rgba(0,122,255,0.15);
+  --green: #30d158;
+  --red: #ff453a;
+  --sep: rgba(0,0,0,0.07);
+  --sep2: rgba(0,0,0,0.04);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow: 0 4px 18px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04);
+  --shadow-lg: 0 10px 40px rgba(0,0,0,0.1);
+  --radius: 18px;
+  --radius-sm: 12px;
+  --font: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+  --nav-h: 58px;
+  --tab-h: 58px;
+}
+[data-dark] {
+  --bg: #0a0a0f;
+  --surface: rgba(24,24,32,0.9);
+  --surface-solid: #18181f;
+  --surface2: rgba(255,255,255,0.05);
+  --surface3: rgba(255,255,255,0.05);
+  --surface4: rgba(255,255,255,0.09);
+  --text: #f0f0f8;
+  --text2: #8888a0;
+  --text3: #40405a;
+  --sep: rgba(255,255,255,0.07);
+  --sep2: rgba(255,255,255,0.04);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.5);
+  --shadow: 0 4px 20px rgba(0,0,0,0.4);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.55);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{
+  font-family:var(--font);
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  overflow-x:hidden;
+  transition:background .4s,color .4s;
+}
+body::before{
+  content:'';
+  position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 55% 35% at 85% 8%,rgba(0,122,255,.05) 0%,transparent 65%),
+    radial-gradient(ellipse 45% 28% at 8% 85%,rgba(88,86,214,.04) 0%,transparent 65%);
+}
+[data-dark] body::before{
+  background:
+    radial-gradient(ellipse 55% 35% at 85% 8%,rgba(0,122,255,.09) 0%,transparent 65%),
+    radial-gradient(ellipse 45% 28% at 8% 85%,rgba(120,100,255,.07) 0%,transparent 65%);
+}
+
+/* NAV */
+.nav{
+  position:sticky;top:0;z-index:90;
+  height:var(--nav-h);
+  background:rgba(245,245,247,.82);
+  backdrop-filter:blur(28px) saturate(180%);
+  -webkit-backdrop-filter:blur(28px) saturate(180%);
+  border-bottom:1px solid var(--sep);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 18px;
+}
+[data-dark] .nav{background:rgba(10,10,15,.88)}
+.nav-brand{display:flex;align-items:center;gap:9px}
+.nav-logo{
+  width:31px;height:31px;border-radius:9px;
+  background:linear-gradient(140deg,#007aff,#5856d6);
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;
+  box-shadow:0 2px 10px rgba(0,122,255,.32);
+}
+.nav-title{font-size:16px;font-weight:800;letter-spacing:-.4px}
+.nav-title em{color:var(--accent);font-style:normal}
+.nav-btns{display:flex;gap:6px}
+.nav-btn{
+  width:31px;height:31px;border-radius:50%;border:none;
+  background:var(--surface3);color:var(--text2);
+  font-size:14px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .18s;backdrop-filter:blur(8px);
+}
+.nav-btn:hover{background:var(--surface4);color:var(--accent);transform:scale(1.08)}
+.nav-btn:active{transform:scale(.92)}
+
+/* TAB BAR */
+.tab-bar{
+  position:fixed;bottom:0;left:0;right:0;z-index:90;
+  height:var(--tab-h);
+  background:rgba(245,245,247,.9);
+  backdrop-filter:blur(28px) saturate(180%);
+  -webkit-backdrop-filter:blur(28px) saturate(180%);
+  border-top:1px solid var(--sep);
+  display:flex;align-items:center;padding:0 8px 5px;
+}
+[data-dark] .tab-bar{background:rgba(10,10,15,.92)}
+.tab-btn{
+  flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;
+  cursor:pointer;padding:5px 4px;border-radius:12px;border:none;
+  background:none;color:var(--text3);
+  font-family:var(--font);transition:color .2s;
+}
+.tab-btn.active{color:var(--accent)}
+.tab-btn:active{opacity:.5}
+.tab-icon{font-size:20px;line-height:1;position:relative}
+.tab-dot{
+  display:none;position:absolute;top:-1px;right:-4px;
+  width:5px;height:5px;border-radius:50%;background:var(--accent);
+  box-shadow:0 0 5px rgba(0,122,255,.6);
+}
+.tab-btn.active .tab-dot{display:block}
+.tab-label{font-size:10px;font-weight:700;letter-spacing:.1px}
+
+/* PAGES */
+.page{display:none;padding-bottom:calc(var(--tab-h) + 20px);position:relative;z-index:1}
+.page.active{display:block;animation:fadeUp .2s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+
+/* SECTION HEADER */
+.sh{
+  padding:18px 20px 7px;
+  font-size:11px;font-weight:800;
+  color:var(--text3);letter-spacing:.9px;text-transform:uppercase;
+}
+
+/* GLASS CARD */
+.card{
+  background:var(--surface);
+  border:1px solid var(--sep);
+  border-radius:var(--radius);
+  margin:0 14px 14px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  transition:background .4s,border-color .4s;
+}
+
+/* SEARCH */
+.search-wrap{padding:12px 14px 6px}
+.search-bar{
+  display:flex;align-items:center;gap:8px;
+  background:var(--surface);border:1px solid var(--sep);
+  border-radius:13px;padding:9px 13px;
+  box-shadow:var(--shadow-sm);
+  backdrop-filter:blur(12px);transition:all .2s;
+}
+.search-bar:focus-within{border-color:rgba(0,122,255,.32);box-shadow:0 0 0 3px var(--accent-glow)}
+.s-icon{font-size:13px;color:var(--text3)}
+.s-input{
+  flex:1;border:none;background:none;outline:none;
+  font-family:var(--font);font-size:15px;color:var(--text);font-weight:600;
+}
+.s-input::placeholder{color:var(--text3);font-weight:400}
+.s-clr{
+  font-size:11px;color:var(--text3);cursor:pointer;
+  background:var(--surface3);border:none;border-radius:50%;
+  width:17px;height:17px;display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .15s;padding:0;font-family:var(--font);
+}
+.s-clr.vis{opacity:1}
+
+/* FILTER CHIPS */
+.filter-row{
+  display:flex;gap:7px;overflow-x:auto;padding:6px 14px 10px;
+  scrollbar-width:none;
+}
+.filter-row::-webkit-scrollbar{display:none}
+.fchip{
+  flex-shrink:0;padding:5px 13px;border-radius:20px;
+  font-size:12.5px;font-weight:700;cursor:pointer;border:none;
+  background:var(--surface);color:var(--text2);
+  box-shadow:var(--shadow-sm);border:1px solid var(--sep);
+  transition:all .18s;font-family:var(--font);
+  backdrop-filter:blur(8px);
+}
+.fchip.on{background:var(--accent);color:#fff;border-color:transparent;box-shadow:0 2px 10px rgba(0,122,255,.28)}
+.fchip:active{transform:scale(.95)}
+
+/* TIER ROW */
+.tier-row{
+  display:flex;align-items:stretch;
+  border-bottom:1px solid var(--sep2);
+  transition:background .15s;
+}
+.tier-row:last-child{border-bottom:none}
+.tier-row.over{background:rgba(0,122,255,.04)}
+.tier-badge{
+  width:50px;min-height:68px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:19px;font-weight:800;letter-spacing:-1px;
+  cursor:default;
+}
+.tier-items{
+  flex:1;display:flex;flex-wrap:wrap;gap:5px;
+  padding:7px 8px;align-content:flex-start;align-items:flex-start;
+  min-height:68px;
+}
+.tier-empty{
+  align-self:center;font-size:12px;color:var(--text3);
+  padding:2px 6px;font-weight:600;
+}
+
+/* ITEM CHIP */
+.ichip{
+  display:flex;flex-direction:column;align-items:center;gap:2px;
+  cursor:grab;user-select:none;padding:4px 3px;
+  border-radius:10px;transition:all .15s;
+}
+.ichip:hover{background:var(--surface3);transform:translateY(-1px)}
+.ichip:active{cursor:grabbing;transform:scale(.94)}
+.ichip.drag{opacity:.3}
+
+.iimg{
+  width:50px;height:50px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:26px;line-height:1;
+  background:var(--surface3);
+  border:1.5px solid var(--sep);
+  transition:box-shadow .2s,border-color .2s;
+}
+/* rarity glows — subtle */
+.iimg[data-r="Sailor"]{border-color:rgba(245,166,35,.55);box-shadow:0 0 9px rgba(245,166,35,.22),0 2px 5px rgba(0,0,0,.08)}
+.iimg[data-r="Legendary"]{border-color:rgba(255,96,96,.45);box-shadow:0 0 9px rgba(255,96,96,.18),0 2px 5px rgba(0,0,0,.07)}
+.iimg[data-r="Epic"]{border-color:rgba(167,139,250,.45);box-shadow:0 0 8px rgba(167,139,250,.18)}
+.iimg[data-r="Rare"]{border-color:rgba(90,200,250,.4);box-shadow:0 0 7px rgba(90,200,250,.15)}
+.ichip:hover .iimg[data-r="Sailor"]{box-shadow:0 0 16px rgba(245,166,35,.38),0 4px 10px rgba(0,0,0,.1)}
+.ichip:hover .iimg[data-r="Legendary"]{box-shadow:0 0 16px rgba(255,96,96,.32),0 4px 10px rgba(0,0,0,.09)}
+.ichip:hover .iimg[data-r="Epic"]{box-shadow:0 0 14px rgba(167,139,250,.3)}
+
+.iname{
+  font-size:9px;font-weight:700;color:var(--text2);
+  text-align:center;max-width:56px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+[data-nonames] .iname{display:none}
+[data-compact] .iimg{width:40px;height:40px;border-radius:10px;font-size:20px}
+[data-compact] .iname{max-width:46px}
+
+/* POOL */
+.pool{
+  display:flex;flex-wrap:wrap;gap:5px;
+  padding:10px;min-height:82px;
+  border-radius:var(--radius);border:1.5px dashed var(--sep);
+  margin:0 14px 14px;align-content:flex-start;
+  transition:border-color .2s,background .2s;
+}
+.pool.over{border-color:var(--accent);background:var(--accent-glow)}
+.pool-empty{
+  width:100%;display:flex;flex-direction:column;align-items:center;gap:5px;
+  padding:10px;color:var(--text3);font-size:12.5px;font-weight:600;
+}
+
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 14px 14px}
+.stat-tile{
+  background:var(--surface);border:1px solid var(--sep);
+  border-radius:var(--radius-sm);padding:14px;
+  box-shadow:var(--shadow-sm);backdrop-filter:blur(12px);
+}
+.stat-n{font-size:30px;font-weight:800;letter-spacing:-1.5px;line-height:1}
+.stat-l{font-size:12px;color:var(--text2);margin-top:3px;font-weight:700}
+
+.brow{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 15px;border-bottom:1px solid var(--sep2);
+}
+.brow:last-child{border-bottom:none}
+.bdot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.bname{flex:1;font-size:14px;font-weight:700}
+.bbar-w{flex:1;height:3px;background:var(--sep);border-radius:2px;max-width:80px}
+.bbar{height:100%;border-radius:2px;transition:width .6s cubic-bezier(.34,1.2,.64,1)}
+.bcount{font-size:14px;font-weight:800;color:var(--text2);min-width:18px;text-align:right}
+
+/* SETTINGS ROW */
+.srow{
+  display:flex;align-items:center;gap:11px;
+  padding:12px 15px;border-bottom:1px solid var(--sep2);
+  cursor:pointer;transition:background .15s;
+}
+.srow:last-child{border-bottom:none}
+.srow:hover{background:var(--surface3)}
+.srow:active{background:var(--surface4)}
+.srow-ico{
+  width:28px;height:28px;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;flex-shrink:0;
+}
+.srow-text{flex:1;font-size:14.5px;font-weight:700}
+.srow-det{font-size:13px;color:var(--text3);font-weight:600}
+.srow-chev{color:var(--text3);font-size:12px;font-weight:800}
+
+/* TOGGLE */
+.tog{
+  width:44px;height:26px;border-radius:13px;
+  background:var(--surface4);border:none;cursor:pointer;
+  position:relative;flex-shrink:0;transition:background .25s;
+  box-shadow:inset 0 1px 3px rgba(0,0,0,.12);
+}
+.tog.on{background:var(--green);box-shadow:0 0 8px rgba(48,209,88,.28)}
+.tog::after{
+  content:'';position:absolute;top:2px;left:2px;
+  width:22px;height:22px;border-radius:50%;background:#fff;
+  box-shadow:0 1px 4px rgba(0,0,0,.22);
+  transition:transform .26s cubic-bezier(.34,1.56,.64,1);
+}
+.tog.on::after{transform:translateX(18px)}
+
+/* LINK CARD */
+.lcard{
+  display:flex;align-items:center;gap:13px;
+  padding:13px 15px;text-decoration:none;color:var(--text);
+  border-bottom:1px solid var(--sep2);cursor:pointer;
+  transition:background .15s;
+}
+.lcard:last-child{border-bottom:none}
+.lcard:hover{background:var(--surface3)}
+.lcard:active{transform:scale(.99)}
+.lico{
+  width:40px;height:40px;border-radius:11px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;flex-shrink:0;
+}
+.linfo{flex:1}
+.ltitle{font-size:14.5px;font-weight:800}
+.lsub{font-size:11.5px;color:var(--text2);margin-top:1px;font-weight:600}
+.larr{color:var(--accent);font-size:14px;font-weight:800}
+
+/* QA GRID */
+.qa-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:0 14px 14px}
+.qa-btn{
+  background:var(--surface);border:1px solid var(--sep);
+  border-radius:var(--radius-sm);padding:13px 12px;
+  cursor:pointer;font-family:var(--font);color:var(--text);
+  box-shadow:var(--shadow-sm);text-align:left;transition:all .18s;
+  backdrop-filter:blur(12px);
+}
+.qa-btn:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
+.qa-btn:active{transform:scale(.97)}
+.qa-ico{font-size:20px;margin-bottom:5px}
+.qa-ttl{font-size:12.5px;font-weight:800}
+.qa-sub{font-size:11px;color:var(--text2);margin-top:1px;font-weight:600}
+
+/* MODAL */
+.overlay{
+  position:fixed;inset:0;z-index:200;
+  background:rgba(0,0,0,.25);
+  backdrop-filter:blur(8px);
+  display:flex;align-items:flex-end;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity .22s;
+}
+.overlay.open{opacity:1;pointer-events:all}
+.sheet{
+  background:var(--surface-solid);
+  border-radius:24px 24px 0 0;
+  width:100%;max-width:480px;
+  padding:10px 18px 44px;
+  transform:translateY(100%);
+  transition:transform .3s cubic-bezier(.32,1.15,.64,1);
+  max-height:92vh;overflow-y:auto;
+  border-top:1px solid var(--sep);
+}
+.overlay.open .sheet{transform:translateY(0)}
+.handle{width:30px;height:3.5px;border-radius:2px;background:var(--sep);margin:0 auto 16px}
+.stitle{font-size:17px;font-weight:800;margin-bottom:15px;text-align:center;letter-spacing:-.3px}
+
+.mbtn{
+  width:100%;padding:13px;border-radius:var(--radius-sm);
+  border:none;font-family:var(--font);font-size:15px;font-weight:800;
+  cursor:pointer;margin-bottom:8px;transition:all .15s;letter-spacing:-.2px;
+}
+.mbtn:last-child{margin-bottom:0}
+.mbtn:active{transform:scale(.98);opacity:.85}
+.mbtn-p{background:var(--accent);color:#fff;box-shadow:0 2px 10px rgba(0,122,255,.28)}
+.mbtn-d{background:rgba(255,69,58,.1);color:var(--red)}
+.mbtn-g{background:var(--surface3);color:var(--text)}
+
+/* FORM */
+.flbl{font-size:11px;font-weight:800;color:var(--text3);letter-spacing:.8px;text-transform:uppercase;margin-bottom:5px;display:block}
+.finput,.fsel{
+  width:100%;padding:10px 12px;border-radius:11px;
+  border:1.5px solid var(--sep);background:var(--surface3);
+  font-family:var(--font);font-size:14.5px;color:var(--text);
+  font-weight:700;outline:none;transition:border-color .2s,box-shadow .2s;
+}
+.finput:focus,.fsel:focus{border-color:rgba(0,122,255,.38);box-shadow:0 0 0 3px var(--accent-glow)}
+.fgrp{margin-bottom:12px}
+
+.erow{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.emo{
+  width:35px;height:35px;border-radius:10px;border:2px solid var(--sep);
+  background:var(--surface3);font-size:17px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:all .15s;
+}
+.emo.on{border-color:var(--accent);background:var(--accent-glow);box-shadow:0 0 6px var(--accent-glow)}
+.emo:hover{transform:scale(1.1)}
+
+/* ITEM DETAIL */
+.det-img{
+  width:72px;height:72px;border-radius:18px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:40px;margin:0 auto 11px;
+  background:var(--surface3);
+}
+.det-name{font-size:19px;font-weight:800;text-align:center;letter-spacing:-.5px}
+.det-sub{text-align:center;margin:6px 0 14px;display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+.badge{
+  display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;
+  font-size:11px;font-weight:800;letter-spacing:.3px;
+}
+.tib{
+  background:var(--surface3);border-radius:var(--radius-sm);
+  padding:11px;text-align:center;margin-bottom:15px;
+}
+.tib-l{font-size:10.5px;color:var(--text3);font-weight:800;text-transform:uppercase;letter-spacing:.6px;margin-bottom:3px}
+.tib-v{font-size:21px;font-weight:800;letter-spacing:-.5px}
+.det-notes{font-size:13.5px;color:var(--text2);text-align:center;padding:0 4px 12px;font-weight:600;line-height:1.55}
+
+/* TOAST */
+.toast{
+  position:fixed;bottom:calc(var(--tab-h) + 14px);left:50%;
+  transform:translateX(-50%) translateY(10px) scale(.95);
+  background:rgba(24,24,32,.92);color:#fff;
+  border-radius:22px;padding:9px 17px;
+  font-size:13.5px;font-weight:700;
+  z-index:400;opacity:0;pointer-events:none;
+  transition:all .26s cubic-bezier(.34,1.4,.64,1);
+  backdrop-filter:blur(16px);white-space:nowrap;
+  box-shadow:0 4px 20px rgba(0,0,0,.28);
+}
+[data-dark] .toast{background:rgba(40,40,55,.94)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}
+
+/* PALETTE */
+.palette{display:flex;gap:7px;flex-wrap:wrap;margin:7px 0}
+.swatch{
+  width:26px;height:26px;border-radius:50%;cursor:pointer;
+  border:2px solid transparent;transition:all .15s;
+}
+.swatch.on{border-color:var(--accent);transform:scale(1.22);box-shadow:0 0 6px var(--accent-glow)}
+
+/* ANIMATIONS */
+@keyframes popin{
+  0%{transform:scale(.74) translateY(3px);opacity:0}
+  65%{transform:scale(1.03);opacity:1}
+  100%{transform:scale(1)}
+}
+.popin{animation:popin .22s cubic-bezier(.34,1.4,.64,1) both}
+
+/* RC colors helper */
+.rc-Sailor{color:#f5a623}
+.rc-Legendary{color:#ff6060}
+.rc-Epic{color:#a78bfa}
+.rc-Rare{color:#5ac8fa}
+.rc-Common{color:var(--text3)}
+
+@media(min-width:480px){
+  .nav,.tab-bar{max-width:480px;left:50%;transform:translateX(-50%);right:auto}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-brand">
+    <div class="nav-logo">🏴</div>
+    <div class="nav-title">Sailor Piece <em>Tiers</em></div>
+  </div>
+  <div class="nav-btns">
+    <button class="nav-btn" id="btn-add">＋</button>
+    <button class="nav-btn" id="btn-share">↑</button>
+    <button class="nav-btn" id="btn-dark">◑</button>
+  </div>
+</nav>
+
+<!-- ITEMS PAGE -->
+<div id="pg-items" class="page active">
+  <div class="search-wrap">
+    <div class="search-bar">
+      <span class="s-icon">⌕</span>
+      <input class="s-input" id="si" placeholder="Search items…" autocomplete="off">
+      <button class="s-clr" id="si-clr">✕</button>
+    </div>
+  </div>
+  <div class="filter-row" id="frow">
+    <button class="fchip on" data-f="all">All</button>
+    <button class="fchip" data-f="Sailor">⭐ Sailor</button>
+    <button class="fchip" data-f="Legendary">🔥 Legendary</button>
+    <button class="fchip" data-f="Epic">💜 Epic</button>
+    <button class="fchip" data-f="Rare">🔵 Rare</button>
+    <button class="fchip" data-f="Common">◻ Common</button>
+  </div>
+  <div class="card" id="tl-card"></div>
+  <div class="sh">Unranked Pool</div>
+  <div class="pool" id="pool" ondragover="dOv(event)" ondrop="dDp(event,'pool')" ondragleave="dLv(event)"></div>
+</div>
+
+<!-- RUNES PAGE -->
+<div id="pg-runes" class="page">
+  <div class="search-wrap">
+    <div class="search-bar">
+      <span class="s-icon">⌕</span>
+      <input class="s-input" id="sr" placeholder="Search runes…" autocomplete="off">
+      <button class="s-clr" id="sr-clr">✕</button>
+    </div>
+  </div>
+  <div class="filter-row" id="rfrow">
+    <button class="fchip on" data-rf="all">All</button>
+    <button class="fchip" data-rf="S">S</button>
+    <button class="fchip" data-rf="A">A</button>
+    <button class="fchip" data-rf="B">B</button>
+    <button class="fchip" data-rf="C">C</button>
+    <button class="fchip" data-rf="D">D</button>
+  </div>
+  <div class="card" id="rune-card"></div>
+</div>
+
+<!-- STATS PAGE -->
+<div id="pg-stats" class="page">
+  <div class="sh">Overview</div>
+  <div class="stats-grid" id="sgrid"></div>
+  <div class="sh">Tier Breakdown</div>
+  <div class="card" id="bcard"></div>
+  <div class="sh">Top Ranked</div>
+  <div class="card" id="tcard"></div>
+</div>
+
+<!-- SETTINGS PAGE -->
+<div id="pg-settings" class="page">
+  <div class="sh">Quick Actions</div>
+  <div class="qa-grid">
+    <button class="qa-btn" id="qa-shr"><div class="qa-ico">📤</div><div class="qa-ttl">Share</div><div class="qa-sub">Copy as text</div></button>
+    <button class="qa-btn" id="qa-exp"><div class="qa-ico">💾</div><div class="qa-ttl">Export JSON</div><div class="qa-sub">Save your data</div></button>
+    <button class="qa-btn" id="qa-imp"><div class="qa-ico">📂</div><div class="qa-ttl">Import JSON</div><div class="qa-sub">Load a backup</div></button>
+    <button class="qa-btn" id="qa-rst"><div class="qa-ico">🔄</div><div class="qa-ttl">Reset</div><div class="qa-sub">Restore defaults</div></button>
+  </div>
+
+  <div class="sh">Community</div>
+  <div class="card">
+    <a class="lcard" href="https://discord.gg/sailorpiece" target="_blank" rel="noopener">
+      <div class="lico" style="background:linear-gradient(135deg,#5865f2,#3b4de0)">💬</div>
+      <div class="linfo"><div class="ltitle">Sailor Piece Discord</div><div class="lsub">Join the official community server</div></div>
+      <div class="larr">↗</div>
+    </a>
+    <a class="lcard" href="https://www.roblox.com/games/sailor-piece" target="_blank" rel="noopener">
+      <div class="lico" style="background:linear-gradient(135deg,#00b06f,#007a4e)">🎮</div>
+      <div class="linfo"><div class="ltitle">Play Sailor Piece</div><div class="lsub">Open the game on Roblox</div></div>
+      <div class="larr">↗</div>
+    </a>
+    <a class="lcard" href="https://www.roblox.com/groups/sailor-piece" target="_blank" rel="noopener">
+      <div class="lico" style="background:linear-gradient(135deg,#f5a623,#e67e22)">👥</div>
+      <div class="linfo"><div class="ltitle">Official Roblox Group</div><div class="lsub">Join the Roblox community</div></div>
+      <div class="larr">↗</div>
+    </a>
+    <a class="lcard" href="https://trello.com" target="_blank" rel="noopener">
+      <div class="lico" style="background:linear-gradient(135deg,#ff6060,#c0392b)">📋</div>
+      <div class="linfo"><div class="ltitle">Trello Roadmap</div><div class="lsub">Track upcoming updates</div></div>
+      <div class="larr">↗</div>
+    </a>
+  </div>
+
+  <div class="sh">Appearance</div>
+  <div class="card">
+    <div class="srow" onclick="togS('dark')">
+      <div class="srow-ico" style="background:#1c1c2e">🌙</div>
+      <div class="srow-text">Dark Mode</div>
+      <button class="tog" id="tog-dark"></button>
+    </div>
+    <div class="srow" onclick="togS('compact')">
+      <div class="srow-ico" style="background:#e8f4fd">📐</div>
+      <div class="srow-text">Compact Items</div>
+      <button class="tog" id="tog-compact"></button>
+    </div>
+    <div class="srow" onclick="togS('names')">
+      <div class="srow-ico" style="background:#f3e5f5">🏷</div>
+      <div class="srow-text">Show Names</div>
+      <button class="tog on" id="tog-names"></button>
+    </div>
+  </div>
+
+  <div class="sh">Tier Colors</div>
+  <div class="card" id="tcolor-card"></div>
+
+  <div class="sh">About</div>
+  <div class="card">
+    <div class="srow" style="cursor:default">
+      <div class="srow-ico" style="background:linear-gradient(135deg,#007aff,#5856d6)">🏴</div>
+      <div class="srow-text">Sailor Piece Tierlist</div>
+      <div class="srow-det">v2.0</div>
+    </div>
+    <div class="srow" style="cursor:default">
+      <div class="srow-ico" style="background:#fff8e1">⚠️</div>
+      <div class="srow-text">Fan-made · Not official</div>
+      <div class="srow-det">For fun</div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB BAR -->
+<nav class="tab-bar" id="tbar">
+  <button class="tab-btn active" data-p="items"><div class="tab-icon">⚔️<span class="tab-dot"></span></div><span class="tab-label">Items</span></button>
+  <button class="tab-btn" data-p="runes"><div class="tab-icon">🔮<span class="tab-dot"></span></div><span class="tab-label">Runes</span></button>
+  <button class="tab-btn" data-p="stats"><div class="tab-icon">📊<span class="tab-dot"></span></div><span class="tab-label">Stats</span></button>
+  <button class="tab-btn" data-p="settings"><div class="tab-icon">⚙️<span class="tab-dot"></span></div><span class="tab-label">Settings</span></button>
+</nav>
+
+<!-- MODAL: ADD -->
+<div class="overlay" id="m-add">
+  <div class="sheet">
+    <div class="handle"></div>
+    <div class="stitle">Add Item</div>
+    <div class="fgrp"><label class="flbl">Name</label><input class="finput" id="fn" placeholder="Item name…"></div>
+    <div class="fgrp">
+      <label class="flbl">Icon</label>
+      <div class="erow" id="epick">
+        <button class="emo on" data-e="⚔️">⚔️</button><button class="emo" data-e="🛡️">🛡️</button>
+        <button class="emo" data-e="🗡️">🗡️</button><button class="emo" data-e="🪄">🪄</button>
+        <button class="emo" data-e="👑">👑</button><button class="emo" data-e="💎">💎</button>
+        <button class="emo" data-e="🔥">🔥</button><button class="emo" data-e="❄️">❄️</button>
+        <button class="emo" data-e="⚡">⚡</button><button class="emo" data-e="🌀">🌀</button>
+        <button class="emo" data-e="🎭">🎭</button><button class="emo" data-e="🃏">🃏</button>
+        <button class="emo" data-e="🧿">🧿</button><button class="emo" data-e="💀">💀</button>
+        <button class="emo" data-e="🦋">🦋</button><button class="emo" data-e="🌌">🌌</button>
+        <button class="emo" data-e="🪽">🪽</button><button class="emo" data-e="🔱">🔱</button>
+        <button class="emo" data-e="☀️">☀️</button><button class="emo" data-e="🌙">🌙</button>
+      </div>
+    </div>
+    <div class="fgrp"><label class="flbl">Rarity</label>
+      <select class="fsel" id="fr"><option value="Sailor">⭐ Sailor</option><option value="Legendary">🔥 Legendary</option><option value="Epic">💜 Epic</option><option value="Rare">🔵 Rare</option><option value="Common">◻ Common</option></select></div>
+    <div class="fgrp"><label class="flbl">Type</label>
+      <select class="fsel" id="ft"><option>Armor</option><option>Weapon</option><option>Accessory</option><option>Other</option></select></div>
+    <div class="fgrp"><label class="flbl">Starting Tier</label>
+      <select class="fsel" id="ftr"><option value="pool">Unranked Pool</option><option value="Sailor">⭐ Sailor</option><option value="S">S</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option></select></div>
+    <button class="mbtn mbtn-p" id="fadd">Add Item</button>
+    <button class="mbtn mbtn-g" onclick="cM('m-add')">Cancel</button>
+  </div>
+</div>
+
+<!-- MODAL: ITEM DETAIL -->
+<div class="overlay" id="m-item">
+  <div class="sheet">
+    <div class="handle"></div>
+    <div id="det"></div>
+    <button class="mbtn mbtn-p" id="btn-mv">Move Tier</button>
+    <button class="mbtn mbtn-d" id="btn-del">Remove Item</button>
+    <button class="mbtn mbtn-g" onclick="cM('m-item')">Close</button>
+  </div>
+</div>
+
+<!-- MODAL: MOVE -->
+<div class="overlay" id="m-move">
+  <div class="sheet">
+    <div class="handle"></div>
+    <div class="stitle" id="mv-title">Move Item</div>
+    <div id="mv-opts"></div>
+    <button class="mbtn mbtn-g" onclick="cM('m-move')">Cancel</button>
+  </div>
+</div>
+
+<!-- MODAL: SHARE -->
+<div class="overlay" id="m-share">
+  <div class="sheet">
+    <div class="handle"></div>
+    <div class="stitle">Share Tierlist</div>
+    <div id="shr-prev" style="background:var(--surface3);border-radius:12px;padding:12px;margin-bottom:13px;font-size:13px;color:var(--text2);white-space:pre-wrap;max-height:220px;overflow-y:auto;line-height:1.75;font-weight:600"></div>
+    <button class="mbtn mbtn-p" id="btn-cpy">📋 Copy to Clipboard</button>
+    <button class="mbtn mbtn-g" onclick="cM('m-share')">Close</button>
+  </div>
+</div>
+
+<!-- MODAL: RESET -->
+<div class="overlay" id="m-reset">
+  <div class="sheet">
+    <div class="handle"></div>
+    <div class="stitle">Reset Tierlist?</div>
+    <p style="text-align:center;color:var(--text2);font-size:14px;margin-bottom:18px;line-height:1.6;font-weight:600">All tiers will return to default. This cannot be undone.</p>
+    <button class="mbtn mbtn-d" id="btn-rst">Reset to Default</button>
+    <button class="mbtn mbtn-g" onclick="cM('m-reset')">Cancel</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── DATA ──
+const TIERS=[
+  {id:'Sailor',label:'Sailor',col:'#f5a623',glow:'rgba(245,166,35,.28)'},
+  {id:'S',label:'S',col:'#ff6060',glow:'rgba(255,96,96,.24)'},
+  {id:'A',label:'A',col:'#ff9a3c',glow:'rgba(255,154,60,.22)'},
+  {id:'B',label:'B',col:'#eacb2f',glow:'rgba(234,203,47,.2)'},
+  {id:'C',label:'C',col:'#4cd964',glow:'rgba(76,217,100,.2)'},
+  {id:'D',label:'D',col:'#5ac8fa',glow:'rgba(90,200,250,.2)'},
+];
+const RC={Sailor:'#f5a623',Legendary:'#ff6060',Epic:'#a78bfa',Rare:'#5ac8fa',Common:'#888'};
+const PAL=['#ff6060','#ff9a3c','#eacb2f','#4cd964','#5ac8fa','#a78bfa','#ff2d55','#30d158','#007aff','#5856d6','#ff9f0a','#64d2ff'];
+
+const DI=[
+  {id:'sun-a',name:'Sun Armor',emoji:'☀️',rarity:'Sailor',type:'Armor',tier:'Sailor',notes:'Best in slot armor with massive HP boost.'},
+  {id:'mon-a',name:'Monarch Armor',emoji:'👑',rarity:'Legendary',type:'Armor',tier:'S',notes:'Excellent all-rounder for boss fights.'},
+  {id:'ain-m',name:'Ainos Mask',emoji:'🎭',rarity:'Legendary',type:'Armor',tier:'S',notes:'Top tier defense and style.'},
+  {id:'gil-a',name:'Gilgamesh Armor',emoji:'⚔️',rarity:'Legendary',type:'Armor',tier:'S',notes:'Iconic BiS for DPS builds.'},
+  {id:'shi-w',name:'Shine Wings',emoji:'🦋',rarity:'Epic',type:'Accessory',tier:'S',notes:'Great mobility bonus and passives.'},
+  {id:'div-w',name:'Divine Wheel',emoji:'☸️',rarity:'Epic',type:'Accessory',tier:'S',notes:'Massive AOE buff, essential for grinding.'},
+  {id:'ult-w',name:'Ultimate Wings',emoji:'🪽',rarity:'Epic',type:'Accessory',tier:'S',notes:'Best wings for DPS builds.'},
+  {id:'goj-h',name:'Gojo Haori',emoji:'🥋',rarity:'Legendary',type:'Armor',tier:'S',notes:'Strong passive skill synergy.'},
+  {id:'sha-c',name:'Shadow Cloak',emoji:'🌑',rarity:'Rare',type:'Armor',tier:'A',notes:'Solid stealth and evasion item.'},
+  {id:'hrt-w',name:'Heart Wings',emoji:'❤️',rarity:'Epic',type:'Accessory',tier:'A',notes:'Good support accessory.'},
+  {id:'aiz-h',name:'Aizen Haori',emoji:'🔮',rarity:'Legendary',type:'Armor',tier:'A',notes:'Powerful ability set.'},
+  {id:'hol-m',name:'Hollow Mask',emoji:'💀',rarity:'Legendary',type:'Armor',tier:'A',notes:'High burst potential in PvP.'},
+  {id:'jin-c',name:'Jinwoo Cape',emoji:'🌌',rarity:'Epic',type:'Armor',tier:'B',notes:'Good stats combo.'},
+  {id:'alu-c',name:'Alucard Coat',emoji:'🧛',rarity:'Rare',type:'Armor',tier:'B',notes:'Lifesteal vampire build.'},
+  {id:'rag-s',name:'Ragna Sigil',emoji:'❄️',rarity:'Rare',type:'Accessory',tier:'B',notes:'Solid PvP pick with proc effects.'},
+  {id:'qui-b',name:'Quinto Bloodblade',emoji:'🗡️',rarity:'Epic',type:'Weapon',tier:'B',notes:'Mid-tier burst weapon.'},
+  {id:'suk-c',name:'Sukuna Collar',emoji:'🔱',rarity:'Rare',type:'Accessory',tier:'C',notes:'Average utility, situational.'},
+  {id:'goj-b',name:'Gojo Blindfold',emoji:'🩹',rarity:'Rare',type:'Armor',tier:'C',notes:'Cooldown reduction only.'},
+  {id:'val-h',name:'Valentine Heart',emoji:'💝',rarity:'Common',type:'Accessory',tier:'C',notes:'Niche event item.'},
+  {id:'yuj-h',name:'Yuji Hair',emoji:'💇',rarity:'Common',type:'Accessory',tier:'D',notes:'Cosmetic only.'},
+  {id:'sab-a',name:'Saber Armor',emoji:'🛡️',rarity:'Common',type:'Armor',tier:'D',notes:'Budget early game armor.'},
+  {id:'san-h',name:'Santa Hat',emoji:'🎅',rarity:'Common',type:'Accessory',tier:'D',notes:'Christmas seasonal item.'},
+];
+
+const DR=[
+  {id:'wr',name:'Wrath Rune',emoji:'⚔️',tier:'S',notes:'Best offensive rune for DPS.'},
+  {id:'fo',name:'Fortune Rune',emoji:'🍀',tier:'S',notes:'Top pick for farming.'},
+  {id:'de',name:'Destruction Rune',emoji:'💥',tier:'A',notes:'Great AOE damage.'},
+  {id:'fl',name:'Flame Rune',emoji:'🔥',tier:'A',notes:'Strong fire synergy.'},
+  {id:'in',name:'Inferno Rune',emoji:'🌋',tier:'B',notes:'Decent fire damage.'},
+  {id:'bl',name:'Blood Rune',emoji:'🩸',tier:'B',notes:'Good lifesteal on hit.'},
+  {id:'th',name:'Thunder Rune',emoji:'⚡',tier:'B',notes:'Solid lightning proc.'},
+  {id:'fr',name:'Frost Rune',emoji:'❄️',tier:'C',notes:'Situational slow.'},
+  {id:'gu',name:'Guardian Rune',emoji:'🛡️',tier:'C',notes:'Mid-tier defense.'},
+  {id:'ph',name:'Phantom Rune',emoji:'👻',tier:'C',notes:'Evasion boost, niche.'},
+  {id:'su',name:'Suppression Rune',emoji:'⛓️',tier:'D',notes:'Nerfed, low value.'},
+  {id:'cu',name:'Cursed Rune',emoji:'🖤',tier:'D',notes:'Debuff only, rarely worth it.'},
+];
+
+// ── STATE ──
+let S={
+  items:[],runes:[],
+  cfg:{dark:false,compact:false,names:true},
+  tc:{},emo:'⚔️',
+  f:'all',rf:'all',q:'',rq:'',
+  fid:null,
+};
+
+function load(){
+  try{
+    const d=JSON.parse(localStorage.getItem('sp_v3')||'{}');
+    S.items=d.items?.length?d.items:JSON.parse(JSON.stringify(DI));
+    S.runes=d.runes?.length?d.runes:JSON.parse(JSON.stringify(DR));
+    if(d.cfg)S.cfg={...S.cfg,...d.cfg};
+    S.tc=d.tc||{};
+  }catch{
+    S.items=JSON.parse(JSON.stringify(DI));
+    S.runes=JSON.parse(JSON.stringify(DR));
+  }
+}
+function save(){localStorage.setItem('sp_v3',JSON.stringify({items:S.items,runes:S.runes,cfg:S.cfg,tc:S.tc}))}
+
+function tC(id){return S.tc[id]||TIERS.find(t=>t.id===id)?.col||'#888'}
+function tG(id){return TIERS.find(t=>t.id===id)?.glow||'transparent'}
+
+function apply(){
+  const d=document.documentElement;
+  S.cfg.dark?d.setAttribute('data-dark',''):d.removeAttribute('data-dark');
+  S.cfg.compact?d.setAttribute('data-compact',''):d.removeAttribute('data-compact');
+  S.cfg.names?d.removeAttribute('data-nonames'):d.setAttribute('data-nonames','');
+}
+
+// ── RENDER ITEMS ──
+function rItems(){
+  const card=document.getElementById('tl-card');
+  const pool=document.getElementById('pool');
+  const q=S.q.toLowerCase();
+  const fil=S.items.filter(it=>{
+    const mQ=!q||it.name.toLowerCase().includes(q)||it.emoji?.includes(q);
+    const mF=S.f==='all'||it.rarity===S.f;
+    return mQ&&mF;
+  });
+  const by={};TIERS.forEach(t=>by[t.id]=[]);
+  const pa=[];
+  fil.forEach(it=>(it.tier==='pool'||!it.tier)?pa.push(it):by[it.tier]?.push(it));
+
+  card.innerHTML=TIERS.map(t=>{
+    const its=by[t.id];
+    const tc=tC(t.id);
+    const tg=tG(t.id);
+    const txtc=t.id==='B'?'#333':'#fff';
+    return`<div class="tier-row" data-tier="${t.id}"
+      ondragover="dOv(event)" ondrop="dDp(event,'${t.id}')" ondragleave="dLv(event)">
+      <div class="tier-badge" style="background:${tc};color:${txtc};box-shadow:2px 0 14px ${tg}">${t.label}</div>
+      <div class="tier-items">
+        ${its.length===0?`<span class="tier-empty">—</span>`:its.map(ch).join('')}
+      </div>
+    </div>`;
+  }).join('');
+
+  pool.innerHTML=pa.length===0
+    ?`<div class="pool-empty"><span style="font-size:22px">📦</span><span>Drag items here to unrank</span></div>`
+    :pa.map(ch).join('');
+}
+
+function ch(it){
+  return`<div class="ichip popin" draggable="true" data-id="${it.id}"
+    ondragstart="dSt(event,'${it.id}')" ondragend="dEd(event)"
+    onclick="showIt('${it.id}')">
+    <div class="iimg" data-r="${it.rarity}">${it.emoji||'⚔️'}</div>
+    <div class="iname">${it.name}</div>
+  </div>`;
+}
+
+// ── RENDER RUNES ──
+function rRunes(){
+  const card=document.getElementById('rune-card');
+  const q=S.rq.toLowerCase();
+  const RT=['S','A','B','C','D'];
+  const by={};RT.forEach(t=>by[t]=[]);
+  S.runes.forEach(r=>{
+    const mQ=!q||r.name.toLowerCase().includes(q);
+    const mF=S.rf==='all'||r.tier===S.rf;
+    if(mQ&&mF&&by[r.tier])by[r.tier].push(r);
+  });
+  const tf=id=>id==='B'?'#333':'#fff';
+  card.innerHTML=RT.map(t=>`
+    <div class="tier-row" data-tier="${t}">
+      <div class="tier-badge" style="background:${tC(t)};color:${tf(t)};box-shadow:2px 0 14px ${tG(t)}">${t}</div>
+      <div class="tier-items">
+        ${by[t].length===0?`<span class="tier-empty">—</span>`:by[t].map(r=>`
+          <div class="ichip popin" onclick="toast('${r.name} · ${r.notes}')">
+            <div class="iimg" data-r="Rare">${r.emoji}</div>
+            <div class="iname">${r.name}</div>
+          </div>`).join('')}
+      </div>
+    </div>`).join('');
+}
+
+// ── RENDER STATS ──
+function rStats(){
+  const sg=document.getElementById('sgrid');
+  const bc=document.getElementById('bcard');
+  const tc=document.getElementById('tcard');
+  const tot=S.items.length;
+  const saN=S.items.filter(i=>i.rarity==='Sailor').length;
+  const sN=S.items.filter(i=>i.tier==='S').length;
+  const pN=S.items.filter(i=>i.tier==='pool'||!i.tier).length;
+  sg.innerHTML=[
+    ['var(--accent)',tot,'Total Items'],
+    ['#f5a623',saN,'Sailor Items'],
+    ['var(--green)',sN,'S Tier Items'],
+    ['var(--text3)',pN,'Unranked'],
+  ].map(([c,n,l])=>`<div class="stat-tile"><div class="stat-n" style="color:${c}">${n}</div><div class="stat-l">${l}</div></div>`).join('');
+
+  const at=[...TIERS,{id:'pool',label:'Unranked',col:'#aeaeb2'}];
+  bc.innerHTML=at.map(t=>{
+    const cnt=t.id==='pool'?pN:S.items.filter(i=>i.tier===t.id).length;
+    const p=tot>0?cnt/tot*100:0;
+    return`<div class="brow">
+      <div class="bdot" style="background:${t.col};box-shadow:0 0 4px ${t.col}66"></div>
+      <div class="bname">${t.label}</div>
+      <div class="bbar-w"><div class="bbar" style="width:${p}%;background:${t.col}"></div></div>
+      <div class="bcount">${cnt}</div>
+    </div>`;
+  }).join('');
+
+  const top=S.items.filter(i=>i.tier==='Sailor'||i.tier==='S').slice(0,6);
+  tc.innerHTML=top.length===0
+    ?`<div class="pool-empty">No S/Sailor tier items yet</div>`
+    :top.map(it=>`<div class="srow" onclick="showIt('${it.id}')">
+      <div style="font-size:24px;width:32px;text-align:center">${it.emoji}</div>
+      <div class="srow-text">${it.name}</div>
+      <span class="badge" style="background:${RC[it.rarity]}18;color:${RC[it.rarity]}">${it.rarity}</span>
+    </div>`).join('');
+}
+
+// ── RENDER SETTINGS ──
+function rSettings(){
+  document.getElementById('tog-dark').classList.toggle('on',S.cfg.dark);
+  document.getElementById('tog-compact').classList.toggle('on',S.cfg.compact);
+  document.getElementById('tog-names').classList.toggle('on',S.cfg.names);
+  const card=document.getElementById('tcolor-card');
+  card.innerHTML=TIERS.map(t=>`
+    <div class="srow" style="flex-wrap:wrap;gap:8px;cursor:default;padding:11px 14px">
+      <div class="tier-badge" style="background:${tC(t.id)};color:${t.id==='B'?'#333':'#fff'};width:28px;height:28px;min-height:28px;font-size:12px;border-radius:7px;flex-shrink:0;box-shadow:0 2px 8px ${tG(t.id)}">${t.label}</div>
+      <div class="srow-text">${t.label} Tier</div>
+      <div class="palette">${PAL.map(c=>`<div class="swatch${tC(t.id)===c?' on':''}" style="background:${c}" onclick="setTC('${t.id}','${c}')"></div>`).join('')}</div>
+    </div>`).join('');
+}
+
+function rAll(){rItems();rRunes();rStats();rSettings()}
+
+// ── DRAG & DROP ──
+let dId=null,dEl=null;
+function dSt(e,id){dId=id;e.dataTransfer.effectAllowed='move';dEl=e.currentTarget;setTimeout(()=>dEl?.classList.add('drag'),0)}
+function dEd(){dEl?.classList.remove('drag');dEl=null;document.querySelectorAll('.over').forEach(x=>x.classList.remove('over'))}
+function dOv(e){e.preventDefault();e.currentTarget.classList.add('over')}
+function dLv(e){e.currentTarget.classList.remove('over')}
+function dDp(e,tier){
+  e.preventDefault();e.currentTarget.classList.remove('over');
+  if(!dId)return;
+  const it=S.items.find(i=>i.id===dId);
+  if(it&&it.tier!==tier){it.tier=tier;save();rItems();toast(`→ ${tier==='pool'?'Unranked':tier+' Tier'}`)}
+  dId=null;
+}
+
+// ── ITEM DETAIL ──
+function showIt(id){
+  const it=S.items.find(i=>i.id===id);if(!it)return;
+  S.fid=id;
+  const t=TIERS.find(t=>t.id===it.tier);
+  document.getElementById('det').innerHTML=`
+    <div class="det-img" style="border:2px solid ${RC[it.rarity]}55;box-shadow:0 0 18px ${RC[it.rarity]}30">${it.emoji}</div>
+    <div class="det-name">${it.name}</div>
+    <div class="det-sub">
+      <span class="badge" style="background:${RC[it.rarity]}18;color:${RC[it.rarity]}">${it.rarity}</span>
+      ${it.type?`<span class="badge" style="background:var(--surface3);color:var(--text2)">${it.type}</span>`:''}
+    </div>
+    <div class="tib">
+      <div class="tib-l">Current Tier</div>
+      <div class="tib-v" style="color:${t?tC(t.id):'var(--text3)'};text-shadow:0 0 10px ${t?tG(t.id):'transparent'}">${it.tier==='pool'?'Unranked':it.tier+' Tier'}</div>
+    </div>
+    ${it.notes?`<div class="det-notes">${it.notes}</div>`:''}`;
+  oM('m-item');
+}
+
+document.getElementById('btn-mv').onclick=()=>{
+  const it=S.items.find(i=>i.id===S.fid);if(!it)return;
+  cM('m-item');
+  document.getElementById('mv-title').textContent=`Move "${it.name}"`;
+  const ops=[...TIERS,{id:'pool',label:'Unranked Pool',col:'#aeaeb2'}];
+  document.getElementById('mv-opts').innerHTML=ops.map(t=>`
+    <button class="mbtn ${it.tier===t.id?'mbtn-p':'mbtn-g'}"
+      style="${it.tier===t.id?`background:${tC(t.id)};box-shadow:0 2px 10px ${tG(t.id)}`:''}"
+      onclick="mvIt('${it.id}','${t.id}')">
+      ${it.tier===t.id?'✓ ':''}${t.label}${t.id.length===1?' Tier':''}
+    </button>`).join('');
+  oM('m-move');
+};
+
+function mvIt(id,tier){
+  const it=S.items.find(i=>i.id===id);
+  if(it){it.tier=tier;save();rItems();toast(`Moved to ${tier==='pool'?'Unranked':tier+' Tier'}`)}
+  cM('m-move');
+}
+
+document.getElementById('btn-del').onclick=()=>{
+  const it=S.items.find(i=>i.id===S.fid);
+  if(it){S.items=S.items.filter(i=>i.id!==S.fid);save();rItems();toast(`Removed ${it.name}`)}
+  cM('m-item');
+};
+
+// ── ADD ITEM ──
+document.getElementById('btn-add').onclick=()=>{
+  document.getElementById('fn').value='';S.emo='⚔️';
+  document.querySelectorAll('.emo').forEach(b=>b.classList.toggle('on',b.dataset.e==='⚔️'));
+  oM('m-add');
+};
+document.querySelectorAll('.emo').forEach(b=>{
+  b.onclick=()=>{S.emo=b.dataset.e;document.querySelectorAll('.emo').forEach(x=>x.classList.remove('on'));b.classList.add('on')};
+});
+document.getElementById('fadd').onclick=()=>{
+  const name=document.getElementById('fn').value.trim();
+  if(!name){toast('Enter a name');return}
+  S.items.push({id:'c'+Date.now(),name,emoji:S.emo,rarity:document.getElementById('fr').value,type:document.getElementById('ft').value,tier:document.getElementById('ftr').value,notes:'Custom item.'});
+  save();rItems();cM('m-add');toast(`Added ${name}! ✨`);
+};
+
+// ── SHARE ──
+function buildShr(){
+  let t='🏴‍☠️ Sailor Piece Tierlist\n━━━━━━━━━━━━━━━━\n';
+  TIERS.forEach(tr=>{
+    const its=S.items.filter(i=>i.tier===tr.id);
+    if(its.length)t+=`[${tr.label}] ${its.map(i=>i.emoji+' '+i.name).join(' · ')}\n`;
+  });
+  return t;
+}
+document.getElementById('btn-share').onclick=()=>{document.getElementById('shr-prev').textContent=buildShr();oM('m-share')};
+document.getElementById('btn-cpy').onclick=()=>{navigator.clipboard.writeText(buildShr()).then(()=>{toast('Copied! 📋');cM('m-share')}).catch(()=>toast('Copy failed'))};
+
+// ── SETTINGS ACTIONS ──
+function togS(k){S.cfg[k]=!S.cfg[k];save();apply();rSettings()}
+document.getElementById('btn-dark').onclick=()=>togS('dark');
+document.getElementById('qa-shr').onclick=()=>{document.getElementById('shr-prev').textContent=buildShr();oM('m-share')};
+document.getElementById('qa-exp').onclick=()=>{
+  const b=new Blob([JSON.stringify({items:S.items,runes:S.runes},null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='sailor-piece-tierlist.json';a.click();
+  toast('Exported! 💾');
+};
+document.getElementById('qa-imp').onclick=()=>{
+  const i=document.createElement('input');i.type='file';i.accept='.json';
+  i.onchange=e=>{const r=new FileReader();r.onload=ev=>{try{const d=JSON.parse(ev.target.result);if(d.items)S.items=d.items;if(d.runes)S.runes=d.runes;save();rAll();toast('Imported! 📂')}catch{toast('Invalid file')}};r.readAsText(e.target.files[0])};
+  i.click();
+};
+document.getElementById('qa-rst').onclick=()=>oM('m-reset');
+document.getElementById('btn-rst').onclick=()=>{
+  S.items=JSON.parse(JSON.stringify(DI));S.runes=JSON.parse(JSON.stringify(DR));S.tc={};
+  save();rAll();cM('m-reset');toast('Reset to defaults 🔄');
+};
+function setTC(id,col){S.tc[id]=col;save();rAll()}
+
+// ── NAVIGATION ──
+document.getElementById('tbar').addEventListener('click',e=>{
+  const b=e.target.closest('.tab-btn');if(!b)return;
+  const p=b.dataset.p;
+  document.querySelectorAll('.tab-btn').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+  document.getElementById('pg-'+p).classList.add('active');
+  if(p==='stats')rStats();
+  if(p==='settings')rSettings();
+});
+
+// ── SEARCH ──
+function setupS(iid,cid,key,fn){
+  const inp=document.getElementById(iid),clr=document.getElementById(cid);
+  inp.addEventListener('input',e=>{S[key]=e.target.value;clr.classList.toggle('vis',!!e.target.value);fn()});
+  clr.addEventListener('click',()=>{inp.value='';S[key]='';clr.classList.remove('vis');fn()});
+}
+setupS('si','si-clr','q',rItems);
+setupS('sr','sr-clr','rq',rRunes);
+
+document.getElementById('frow').addEventListener('click',e=>{
+  const c=e.target.closest('.fchip');if(!c)return;
+  S.f=c.dataset.f;
+  document.querySelectorAll('#frow .fchip').forEach(x=>x.classList.remove('on'));
+  c.classList.add('on');rItems();
+});
+document.getElementById('rfrow').addEventListener('click',e=>{
+  const c=e.target.closest('.fchip');if(!c)return;
+  S.rf=c.dataset.rf;
+  document.querySelectorAll('#rfrow .fchip').forEach(x=>x.classList.remove('on'));
+  c.classList.add('on');rRunes();
+});
+
+// ── MODAL ──
+function oM(id){document.getElementById(id).classList.add('open')}
+function cM(id){document.getElementById(id).classList.remove('open')}
+document.querySelectorAll('.overlay').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('open')}));
+
+// ── TOAST ──
+let tT;
+function toast(msg){
+  const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');
+  clearTimeout(tT);tT=setTimeout(()=>el.classList.remove('show'),2400);
+}
+
+// ── INIT ──
+load();apply();rAll();
+</script>
+</body>
+</html>
